@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-dask
-Version  : 2023.4.0
-Release  : 186
-URL      : https://files.pythonhosted.org/packages/c8/11/e2a897b7dfd768e87b1e8d2ae5ebe3ce29cbce0547ba9a3aa2ba1be49324/dask-2023.4.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/c8/11/e2a897b7dfd768e87b1e8d2ae5ebe3ce29cbce0547ba9a3aa2ba1be49324/dask-2023.4.0.tar.gz
+Version  : 2023.4.1
+Release  : 187
+URL      : https://files.pythonhosted.org/packages/3b/48/5d73c3eca309266f497816a042588b1f3d20702dd8b6c912d8015c1358c7/dask-2023.4.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/3b/48/5d73c3eca309266f497816a042588b1f3d20702dd8b6c912d8015c1358c7/dask-2023.4.1.tar.gz
 Summary  : Parallel PyData with Task Scheduling
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -71,10 +71,10 @@ python3 components for the pypi-dask package.
 
 
 %prep
-%setup -q -n dask-2023.4.0
-cd %{_builddir}/dask-2023.4.0
+%setup -q -n dask-2023.4.1
+cd %{_builddir}/dask-2023.4.1
 pushd ..
-cp -a dask-2023.4.0 buildavx2
+cp -a dask-2023.4.1 buildavx2
 popd
 
 %build
@@ -82,15 +82,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1681747527
+export SOURCE_DATE_EPOCH=1682972440
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 -m build --wheel --skip-dependency-check --no-isolation
 pushd ../buildavx2/
