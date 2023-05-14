@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-dask
-Version  : 2023.4.1
-Release  : 187
-URL      : https://files.pythonhosted.org/packages/3b/48/5d73c3eca309266f497816a042588b1f3d20702dd8b6c912d8015c1358c7/dask-2023.4.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/3b/48/5d73c3eca309266f497816a042588b1f3d20702dd8b6c912d8015c1358c7/dask-2023.4.1.tar.gz
+Version  : 2023.5.0
+Release  : 188
+URL      : https://files.pythonhosted.org/packages/84/51/c8abbf0ea47edcb841e10229b412da3ec4be0a762b02b900c57786c1e640/dask-2023.5.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/84/51/c8abbf0ea47edcb841e10229b412da3ec4be0a762b02b900c57786c1e640/dask-2023.5.0.tar.gz
 Summary  : Parallel PyData with Task Scheduling
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -16,6 +16,7 @@ Requires: pypi-dask-license = %{version}-%{release}
 Requires: pypi-dask-python = %{version}-%{release}
 Requires: pypi-dask-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
+BuildRequires : pypi(setuptools)
 BuildRequires : pypi(versioneer)
 # Suppress stripping binaries
 %define __strip /bin/true
@@ -71,10 +72,10 @@ python3 components for the pypi-dask package.
 
 
 %prep
-%setup -q -n dask-2023.4.1
-cd %{_builddir}/dask-2023.4.1
+%setup -q -n dask-2023.5.0
+cd %{_builddir}/dask-2023.5.0
 pushd ..
-cp -a dask-2023.4.1 buildavx2
+cp -a dask-2023.5.0 buildavx2
 popd
 
 %build
@@ -82,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682972440
+export SOURCE_DATE_EPOCH=1684029159
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
