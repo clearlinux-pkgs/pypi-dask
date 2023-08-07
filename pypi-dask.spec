@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-dask
-Version  : 2023.7.1
-Release  : 193
-URL      : https://files.pythonhosted.org/packages/54/e9/9606f390d73db80182ea72c92e12e7dda6f37b27256a08642e02dc4a9171/dask-2023.7.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/54/e9/9606f390d73db80182ea72c92e12e7dda6f37b27256a08642e02dc4a9171/dask-2023.7.1.tar.gz
+Version  : 2023.8.0
+Release  : 194
+URL      : https://files.pythonhosted.org/packages/a5/60/f44abd77372ee2ac57b33681e7aac0b19a2b14b70443e3aee32bd7b8a4b2/dask-2023.8.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/a5/60/f44abd77372ee2ac57b33681e7aac0b19a2b14b70443e3aee32bd7b8a4b2/dask-2023.8.0.tar.gz
 Summary  : Parallel PyData with Task Scheduling
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -72,10 +72,10 @@ python3 components for the pypi-dask package.
 
 
 %prep
-%setup -q -n dask-2023.7.1
-cd %{_builddir}/dask-2023.7.1
+%setup -q -n dask-2023.8.0
+cd %{_builddir}/dask-2023.8.0
 pushd ..
-cp -a dask-2023.7.1 buildavx2
+cp -a dask-2023.8.0 buildavx2
 popd
 
 %build
@@ -83,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1689952672
+export SOURCE_DATE_EPOCH=1691427051
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
