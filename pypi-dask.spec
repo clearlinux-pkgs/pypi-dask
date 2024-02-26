@@ -6,10 +6,10 @@
 # autospec commit: da8b975
 #
 Name     : pypi-dask
-Version  : 2024.2.0
-Release  : 212
-URL      : https://files.pythonhosted.org/packages/51/e6/eef4b8710ecb03508f100a1bc43cf1ce30aa42f4728d3c48e63f7082a6a6/dask-2024.2.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/51/e6/eef4b8710ecb03508f100a1bc43cf1ce30aa42f4728d3c48e63f7082a6a6/dask-2024.2.0.tar.gz
+Version  : 2024.2.1
+Release  : 213
+URL      : https://files.pythonhosted.org/packages/2c/5e/22745aed9838f568e9cf50349c837f1fcad930256cc5e64ca098a23795d4/dask-2024.2.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/2c/5e/22745aed9838f568e9cf50349c837f1fcad930256cc5e64ca098a23795d4/dask-2024.2.1.tar.gz
 Summary  : Parallel PyData with Task Scheduling
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -74,13 +74,10 @@ python3 components for the pypi-dask package.
 
 
 %prep
-%setup -q -n dask-2024.2.0
-cd %{_builddir}/dask-2024.2.0
+%setup -q -n dask-2024.2.1
+cd %{_builddir}/dask-2024.2.1
 pushd ..
-cp -a dask-2024.2.0 buildavx2
-popd
-pushd ..
-cp -a dask-2024.2.0 buildapx
+cp -a dask-2024.2.1 buildavx2
 popd
 
 %build
@@ -88,7 +85,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1707667804
+export SOURCE_DATE_EPOCH=1708967631
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -110,16 +107,6 @@ CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 "
-LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
-python3 -m build --wheel --skip-dependency-check --no-isolation
-
-popd
-pushd ../buildapx/
-CC=gcc-14
-CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 -mapxf -mavx10.1 "
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
 python3 -m build --wheel --skip-dependency-check --no-isolation
 
@@ -157,17 +144,7 @@ FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 "
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
 python3 -m installer --destdir=%{buildroot}-v3 dist/*.whl
 popd
-pushd ../buildapx/
-CC=gcc-14
-CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 -mapxf -mavx10.1 "
-LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
-python3 -m installer --destdir=%{buildroot}-va dist/*.whl
-popd
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
-/usr/bin/elf-move.py apx %{buildroot}-va %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
