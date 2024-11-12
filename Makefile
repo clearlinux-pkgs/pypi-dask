@@ -1,5 +1,5 @@
 PKG_NAME := pypi-dask
-URL = https://files.pythonhosted.org/packages/c3/81/290e2aad63435c61076b603ed7d12d5d77c67998c39eb5dd907ed8e63dc6/dask-2024.11.0.tar.gz
+URL = https://files.pythonhosted.org/packages/c7/a9/3b67bafe5c2672d7176e5a939e55c071075bd4318b224d1b00553e0049c9/dask-2024.11.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
