@@ -7,7 +7,7 @@
 #
 Name     : pypi-dask
 Version  : 2025.1.0
-Release  : 248
+Release  : 249
 URL      : https://files.pythonhosted.org/packages/ff/41/43eb54e0f6d1ba971d5adcad8f0862b327af6a2041aa134acbcec630ad43/dask-2025.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/ff/41/43eb54e0f6d1ba971d5adcad8f0862b327af6a2041aa134acbcec630ad43/dask-2025.1.0.tar.gz
 Summary  : Parallel PyData with Task Scheduling
